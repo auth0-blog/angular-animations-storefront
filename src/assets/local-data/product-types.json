@@ -1,0 +1,24 @@
+{
+    "productTypes": [
+        {
+            "displayName": "Explore",
+            "typeKey": "explore"
+        },
+        {
+            "displayName": "New",
+            "typeKey": "new"
+        },
+        {
+            "displayName": "Trending",
+            "typeKey": "trending"
+        },
+        {
+            "displayName": "For you",
+            "typeKey": "recommended"   
+        },
+        {
+            "displayName": "Random",
+            "typeKey": "random"   
+        }
+    ]
+}

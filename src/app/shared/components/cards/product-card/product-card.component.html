@@ -1,0 +1,19 @@
+<div 
+    tabIndex="1"
+    role="button"
+    (keyDown.enter)="addToCart(product)"
+    class="grid grid-rows-5 grid-cols-1 rounded-xl h-full cursor-pointer hover-shadow"
+    (click)="addToCart(product)">
+    <div class="row-start-1 row-span-5 col-start-1 col-span-1 grid">
+        <img class="h-full w-full place-self-center rounded-xl" [src]="product?.imageUrl"/>
+    </div>
+
+    <div class="row-start-5 row-span-1 col-start-1 col-span-1 self-end m-1 px-5 py-3 rounded-b-xl rounded-t-md bg-white bg-opacity-40">
+    
+    <div class="grid grid-rows-3 grid-cols-1">
+        <span class="row-start-1 row-span-1 col-start-1 col-span-1 font-bold text-lg text-center leading-tight">{{ product?.title }}</span>
+        <span class="row-start-2 row-span-1 col-start-1 col-span-1 text-sm text-opacity-50 text-center leading-tight">{{ product?.description }}</span>
+        <span class="row-start-3 row-span-1 col-start-1 col-span-1 font-bold text-center">${{ product?.price }}</span>
+    </div>
+    </div>
+</div>

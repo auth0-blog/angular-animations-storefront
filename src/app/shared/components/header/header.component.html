@@ -1,0 +1,18 @@
+<div class="grid grid-rows-1 grid-cols-5 p-5 bg-white">
+    <div class="row-start-1 row-span-1 col-start-1 col-span-4 md:col-span-3">
+        <input
+            type="text"
+            class="p-2 border-solid border-2 border-gray rounded-xl w-full"
+            placeholder="Search for anything your heart desires"
+            [(ngModel)]="searchQuery"
+            (ngModelChange)="onSearch($event)">
+    </div>
+
+    <div class="row-start-1 row-span-1 col-start-5 col-span-1 justify-self-end">
+        <button class="button py-3 px-6 rounded-xl" (click)="openCart()">
+            <div class="grid grid-rows-1 grid-cols-1">
+                <fa-icon class="text-l" [icon]="icons.cart"></fa-icon>
+            </div>
+        </button>
+    </div>
+</div>
