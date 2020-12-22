@@ -48,6 +48,8 @@ export const ScaleFadeStagger = trigger('scaleFadeStagger', [
       ],
       { optional: true }
     ),
+  ]),
+  transition(':leave', [
     query(
       ':leave',
       [
