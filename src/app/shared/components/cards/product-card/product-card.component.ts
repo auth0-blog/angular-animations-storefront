@@ -14,8 +14,6 @@ export class ProductCardComponent extends BaseComponent {
   constructor(private cartService: CartService) {
     super();
   }
-  DOMrect;
-  ngAfterViewInit(): void {}
 
   addToCart(selectedProduct: IProduct): void {
     this.cartService.addToCart(selectedProduct);
