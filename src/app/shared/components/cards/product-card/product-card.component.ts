@@ -1,14 +1,16 @@
 import { Component, Input } from '@angular/core';
-import { CartService, IProduct } from 'src/app/core';
+import { BaseComponent, CartService, IProduct } from 'src/app/core';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
 })
-export class ProductCardComponent {
+export class ProductCardComponent extends BaseComponent {
   @Input() product: IProduct;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) {
+    super();
+  }
 
   addToCart(selectedProduct: IProduct): void {
     this.cartService.addToCart(selectedProduct);
