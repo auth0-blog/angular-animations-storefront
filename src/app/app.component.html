@@ -11,7 +11,7 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-  <div *ngIf="cartIsOpened$ | async" @slideRight class="col-start-1 col-span-5 sm:col-start-4 sm:col-span-2 row-start-1 row-span-1 relative z-30">
+  <div *ngIf="cartIsOpened$ | async" class="col-start-1 col-span-5 sm:col-start-4 sm:col-span-2 row-start-1 row-span-1 relative z-30">
     <app-cart></app-cart>
   </div>
 </div>
