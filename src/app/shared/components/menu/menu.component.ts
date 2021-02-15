@@ -4,7 +4,7 @@ import {
   DataService,
   ProductType,
   UIService,
-} from 'src/app/core';
+} from '../../../core';
 
 @Component({
   selector: 'app-menu',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { DataService, ProductType, UIService } from 'src/app/core';
+import { DataService, ProductType, UIService } from '../../core';
 
 @Component({
   selector: 'app-home',

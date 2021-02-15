@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BaseComponent, UIService } from 'src/app/core';
+import { BaseComponent, UIService } from '../../../core';
 
 @Component({
   selector: 'app-header',

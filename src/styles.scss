@@ -1,8 +1,17 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+// [STACKBLITZ]: this import doesn't work in stackblitz, see index.html
+// @import 'tailwindcss/base';
+// @import 'tailwindcss/components';
+// @import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
 
 img {
   object-fit: cover;
+}
+
+// [STACKBLITZ]: this is to replace the masonry layout in tailwind.config.js
+.masonry {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.auto-rows-5 {
+  grid-auto-rows: 5rem;
 }

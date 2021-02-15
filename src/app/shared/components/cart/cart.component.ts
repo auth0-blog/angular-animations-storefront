@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BaseComponent, CartService, UIService } from 'src/app/core';
+import { BaseComponent, CartService, UIService } from '../../../core';
 
 @Component({
   selector: 'app-cart',
