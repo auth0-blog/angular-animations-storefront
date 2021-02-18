@@ -1,0 +1,140 @@
+{
+    "products": [
+        {
+            "productId": 1,
+            "title": "Yellow Telephone",
+            "description": "Because yellow telephones are better",
+            "catagories": ["objects"],
+            "type": "new",
+            "price": 15,
+            "imageUrl": "https://source.unsplash.com/-haAxbjiHds/700x700"
+        },
+        {
+            "productId": 2,
+            "title": "Just the Cone",
+            "description": "Because why not?",
+            "catagories": ["objects"],
+            "type": "recommended",
+            "price": 5,
+            "imageUrl": "https://source.unsplash.com/Rz5o0osnN6Q/700x700"
+        },
+        {
+            "productId": 3,
+            "title": "Pink Grapes",
+            "description": "Tastes like strawberry",
+            "catagories": ["objects"],
+            "type": "new",
+            "price": 7,
+            "imageUrl": "https://source.unsplash.com/pz_hAv6ER7c/700x700"
+        },
+        {
+            "productId": 4,
+            "title": "Lobster",
+            "description": "Yum, seafood",
+            "catagories": ["objects"],
+            "type": "trending",
+            "price": 30,
+            "imageUrl": "https://source.unsplash.com/YeOMRwgvPv4/700x700"
+        },
+        {
+            "productId": 5,
+            "title": "Cherries",
+            "description": "Cherrific!!",
+            "catagories": ["objects"],
+            "type": "trending",
+            "price": 15,
+            "imageUrl": "https://source.unsplash.com/vbAEHCrvXZ0/700x700"
+        },
+        {
+            "productId": 6,
+            "title": "Playstation Controller",
+            "description": "Break time",
+            "catagories": ["objects"],
+            "type": "trending",
+            "price": 20,
+            "imageUrl": "https://source.unsplash.com/IJyXoyGmiZY/700x700"
+        },
+        {
+            "productId": 7,
+            "title": "Brussel Sprouts",
+            "description": "Baby cabbage",
+            "catagories": ["objects"],
+            "type": "trending",
+            "price": 2,
+            "imageUrl": "https://source.unsplash.com/g733A40xl3Q/700x700"
+        },
+        {
+            "productId": 8,
+            "title": "Pink Pineapple",
+            "description": "Is this even edible?",
+            "catagories": ["objects"],
+            "type": "new",
+            "price": 20,
+            "imageUrl": "https://source.unsplash.com/9f55wJpnCwY/700x700"
+        },
+        {
+            "productId": 9,
+            "title": "Donuts",
+            "description": "Coffee's best friend",
+            "catagories": ["objects"],
+            "type": "trending",
+            "price": 10,
+            "imageUrl": "https://source.unsplash.com/PFzy4N0_R3M/700x700"
+        },
+        {
+            "productId": 10,
+            "title": "Retro Gaming System",
+            "description": "Before gaming was cool",
+            "catagories": ["objects"],
+            "type": "new",
+            "price": 25,
+            "imageUrl": "https://source.unsplash.com/v8XaVfyo41Q/700x700"
+        },
+        {
+            "productId": 11,
+            "title": "Stool",
+            "description": "People gotta sit",
+            "catagories": ["objects"],
+            "type": "new",
+            "price": "20",
+            "imageUrl": "https://source.unsplash.com/4kTbAMRAHtQ/700x700"
+        },
+        {
+            "productId": 12,
+            "title": "Icecream",
+            "description": "Always room for dessert",
+            "catagories": ["objects"],
+            "type": "new",
+            "price": 10,
+            "imageUrl": "https://source.unsplash.com/TLD6iCOlyb0/700x700"
+        },
+        {
+            "productId": 13,
+            "title": "Tennis Court",
+            "description": "Nothing too big that we can't sell",
+            "catagories": ["objects"],
+            "type": "recommended",
+            "price": 50,
+            "imageUrl": "https://source.unsplash.com/aG6ByqGXiXg/700x700"
+        },
+        {
+            "productId": 14,
+            "title": "Cake",
+            "description": "Everything is cake",
+            "catagories": ["objects"],
+            "type": "trending",
+            "price": 5,
+            "imageUrl": "https://source.unsplash.com/1Hh57OhkdCc/700x700"
+        },
+        {
+            "productId": 15,
+            "title": "Avocado",
+            "description": "What's up Guac?",
+            "catagories": ["objects"],
+            "type": "trending",
+            "price": 10,
+            "imageUrl": "https://source.unsplash.com/9aOswReDKPo/700x700"
+        }
+    ]
+}
+
