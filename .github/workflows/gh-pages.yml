@@ -12,7 +12,7 @@ jobs:
       matrix:
         node-version: [12.x]
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@stackblitz-animated
 
       - name: Cache node modules
         uses: actions/cache@v1
