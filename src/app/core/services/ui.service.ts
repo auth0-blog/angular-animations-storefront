@@ -8,7 +8,8 @@ import { Categories, ProductType } from '../models';
 })
 export class UIService {
   private _stateSource$ = new BehaviorSubject<UIState>({
-    cartIsOpened: false,
+    cartIsOpened: undefined,
+    orderConfirmationIsOpened: undefined,
     searchQuery: '',
     productType: ProductType.explore,
   });
@@ -18,6 +19,10 @@ export class UIService {
 
   selectCart$(): Observable<boolean> {
     return this.state$.pipe(map((state) => state.cartIsOpened));
+  }
+
+  selectOrderConfirmation$(): Observable<boolean> {
+    return this.state$.pipe(map((state) => state.orderConfirmationIsOpened));
   }
 
   selectSearchQuery$(): Observable<string> {
@@ -37,6 +42,13 @@ export class UIService {
     });
   }
 
+  toggleOrderConfirmation(isOpened: boolean): void {
+    this._stateSource$.next({
+      ...this._getCurrentState(),
+      orderConfirmationIsOpened: isOpened,
+    });
+  }
+
   search(keyword: string): void {
     this._stateSource$.next({
       ...this._getCurrentState(),
@@ -51,6 +63,16 @@ export class UIService {
     });
   }
 
+  // Current Value
+
+  selectCartCurrentValue(): boolean {
+    return this._getCurrentState().cartIsOpened;
+  }
+
+  selectOrderConfirmationCurrentValue(): boolean {
+    return this._getCurrentState().orderConfirmationIsOpened;
+  }
+
   private _getCurrentState(): UIState {
     return this._stateSource$.value;
   }
@@ -58,6 +80,7 @@ export class UIService {
 
 export interface UIState {
   cartIsOpened: boolean;
+  orderConfirmationIsOpened: boolean;
   searchQuery: string;
   productType: ProductType;
 }

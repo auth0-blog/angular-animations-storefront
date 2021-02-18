@@ -1,13 +1,14 @@
-<div class="p-5">
+<div class="p-5 relative z-0">
     <h2 class="font-extrabold text-3xl">{{ selectedProductType$ | async | titlecase }}</h2>
 
-    <ng-container *ngIf="productItems$ | async as products">
-        <div class="grid auto-rows-5 grid-cols-auto-fill gap-6 my-5 masonry">
+    <ng-container *ngIf="products">
+        <div class="grid auto-rows-5 grid-cols-auto-fill gap-6 my-5 masonry" @scaleFadeStagger>
             <ng-container *ngFor="let productItem of products">
                 <div class="masonry-item" 
                     [class.row-span-3]="productItem.type === 'new'"
                     [class.row-span-4]="productItem.type === 'trending'"
                     [class.row-span-5]="productItem.type === 'recommended'"
+                    @scaleFade
                 >
                     <app-product-card [product]="productItem"></app-product-card>
                 </div>
@@ -18,5 +19,4 @@
             <span class="text-center text-xl text-gray-600 align-middle">No results found</span>
         </ng-container>
     </ng-container>
-
 </div>

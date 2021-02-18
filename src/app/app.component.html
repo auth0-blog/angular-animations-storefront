@@ -11,7 +11,29 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-  <div *ngIf="cartIsOpened$ | async" class="col-start-1 col-span-5 sm:col-start-4 sm:col-span-2 row-start-1 row-span-1 relative z-30">
-    <app-cart></app-cart>
-  </div>
+  <ng-container *ngIf="{ orderConfirmation: orderConfirmationIsOpened$ | async, cart: cartIsOpened$ | async } as layers">
+    <!-- fade -->
+    <div *ngIf="layers.orderConfirmation || layers.cart" (click)="closeAllLayers()" class="col-start-1 col-span-5 z-20 row-start-1 row-span-1 bg-white bg-opacity-60 h-full w-full"></div>
+    
+    <!-- cart (angular animations) -->
+    <div *ngIf="layers.cart" @slideRight class="col-start-1 col-span-5 sm:col-start-4 sm:col-span-2 row-start-1 row-span-1 relative z-30">
+      <app-cart></app-cart>
+    </div>
+
+    <!-- order confirmation (animate.css) -->
+    <!-- separate 'undefined' and 'false' here because 'undefined' means that its not initialized yet
+         so it shouldn't trigger the `bounceOutDown` animation when the component loads (causing the 
+         component to be briefly visible then triggering the exit animation).
+         Try removing the `ng-container` below to see the difference -->
+    <ng-container *ngIf="layers.orderConfirmation !== undefined">
+      <div class="col-start-1 col-span-5 row-start-1 row-span-1 relative z-30 grid content-center justify-center animated"
+          [class.bounceInUp]="layers.orderConfirmation === true"
+          [class.bounceOutDown]="layers.orderConfirmation === false"
+          (click)="closeAllLayers()">
+            <app-order-confirmation></app-order-confirmation>
+      </div>
+    </ng-container>
+
+  </ng-container>
+
 </div>
