@@ -13,7 +13,7 @@
   </div>
   <ng-container *ngIf="{ orderConfirmation: orderConfirmationIsOpened$ | async, cart: cartIsOpened$ | async } as layers">
     <!-- fade -->
-    <div *ngIf="layers.orderConfirmation || layers.cart" (click)="closeAllLayers()" class="col-start-1 col-span-5 z-20 row-start-1 row-span-1 bg-white bg-opacity-60 h-full w-full"></div>
+    <div *ngIf="layers.cart" (click)="closeAllLayers()" class="col-start-1 col-span-5 z-20 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
     
     <!-- cart (angular animations) -->
     <div *ngIf="layers.cart" @slideRight class="col-start-1 col-span-5 sm:col-start-4 sm:col-span-2 row-start-1 row-span-1 relative z-30">
@@ -26,7 +26,8 @@
          component to be briefly visible then triggering the exit animation).
          Try removing the `ng-container` below to see the difference -->
     <ng-container *ngIf="layers.orderConfirmation !== undefined">
-      <div class="col-start-1 col-span-5 row-start-1 row-span-1 relative z-30 grid content-center justify-center animated"
+      <div *ngIf="layers.orderConfirmation === true" (click)="closeAllLayers()" class="col-start-1 col-span-5 z-30 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
+      <div class="col-start-1 col-span-5 row-start-1 row-span-1 relative z-40 grid content-center justify-center animated"
           [class.bounceInUp]="layers.orderConfirmation === true"
           [class.bounceOutDown]="layers.orderConfirmation === false"
           (click)="closeAllLayers()">
