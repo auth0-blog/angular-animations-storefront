@@ -2,7 +2,7 @@
     <div #addToCartLayer class="row-start-1 row-span-1 col-start-1 col-span-1 invisible">
         <ng-container *ngTemplateOutlet="productTemplate;context:{product:product}"></ng-container>
     </div>
-    <div #displayCard class="row-start-1 row-span-1 col-start-1 col-span-1 z-10">
+    <div #displayCard class="row-start-1 row-span-1 col-start-1 col-span-1 z-10" (click)="viewProductDetails(product)">
         <ng-container *ngTemplateOutlet="productTemplate;context:{product:product}"></ng-container>
     </div>
 </div>
@@ -14,7 +14,7 @@
             <img class="h-full w-full rounded-xl" [src]="product?.imageUrl"/>
         </div>
         <div class="row-start-1 row-span-1 col-start-1 col-span-1 justify-self-end align-self-start">
-            <button class="button py-3 px-6" (click)="addToCart(product)">
+            <button class="button py-3 px-6" (click)="noop($event); addToCart(product)">
                 <fa-icon class="text-l" [icon]="icons.cartPlus"></fa-icon>
             </button>
         </div>

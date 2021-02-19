@@ -1,5 +1,10 @@
 import { Component, Input, ViewChild, ElementRef } from '@angular/core';
-import { BaseComponent, CartService, IProduct } from '../../../../core';
+import {
+  BaseComponent,
+  CartService,
+  IProduct,
+  UIService,
+} from '../../../../core';
 import { SlideRight } from '../../../animations';
 
 @Component({
@@ -13,7 +18,7 @@ export class ProductCardComponent extends BaseComponent {
   @ViewChild('addToCartLayer') addToCartLayer: ElementRef;
   @ViewChild('displayCard') displayCard: ElementRef;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private uiService: UIService) {
     super();
   }
 
@@ -55,5 +60,13 @@ export class ProductCardComponent extends BaseComponent {
     addToCartAnimation.onfinish = () => {
       this.addToCartLayer.nativeElement.style.visibility = 'hidden';
     };
+  }
+
+  viewProductDetails(selectedProduct: IProduct): void {
+    this.uiService.viewProductDetails(selectedProduct);
+  }
+
+  noop(event): void {
+    event.stopPropagation();
   }
 }

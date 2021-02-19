@@ -1,0 +1,47 @@
+<div class="p-5 product-details-container bg-white shadow-md flex flex-col rounded-xl" (click)="noop($event)">
+    <div class="flex flex-row items-center justify-end">
+        <button class="button py-3 px-6 rounded-xl" (click)="closeProductDetails()">
+            <fa-icon class="text-l" [icon]="icons.close"></fa-icon>
+        </button>
+    </div>
+    <div class="p-10 flex flex-wrap justify-center gap-6">
+    
+        <ng-container *ngIf="product">
+            
+            <img class="w-56 h-56 rounded-xl" [src]="product.imageUrl"/>
+            
+            <div class="max-w-min">
+                <div class="flex flex-wrap align-end">
+                    <h2 class="text-2xl font-bold flex-1">{{ product.title }}</h2>
+                    <span class="font-bold text-blue-400 text-3xl">${{ product?.price }}</span>
+                </div>
+                <p class="text-md">
+                    {{ product.description }}
+                </p>
+
+                <p class="text-md text-gray-500 flex-1">
+                    <!-- office ipsum lol -->
+                    We need to socialize the comms with the wider stakeholder community increase the pipelines work flows , for digital literacy but gain traction, yet what's our go to market strategy? get buy-in.
+                </p>
+        
+                <ng-container *ngIf="product.categories?.length > 0">
+                    <p>Categories</p>
+                    <div *ngFor="let category of product.categories">
+                        <div class="">
+                            {{ category }}
+                        </div>
+                    </div>
+                </ng-container>
+
+                <div class="mt-10 flex justify-center md:justify-start">
+                    <button
+                        class="p-3 w-56 text-l font-bold rounded-full bg-blue-400 text-white"
+                        >
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+    
+        </ng-container>
+    </div>
+</div>

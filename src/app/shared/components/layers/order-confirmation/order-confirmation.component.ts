@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BaseComponent, UIService } from '../../../core';
+import { BaseComponent, UIService } from '../../../../core';
 
 @Component({
   selector: 'app-order-confirmation',

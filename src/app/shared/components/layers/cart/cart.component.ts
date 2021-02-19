@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BaseComponent, CartService, UIService } from '../../../core';
-import { SlideFadeLeft } from '../../animations';
+import { BaseComponent, CartService, UIService } from '../../../../core';
+import { SlideFadeLeft } from '../../../animations';
 
 @Component({
   selector: 'app-cart',

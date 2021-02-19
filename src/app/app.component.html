@@ -11,7 +11,7 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-  <ng-container *ngIf="{ orderConfirmation: orderConfirmationIsOpened$ | async, cart: cartIsOpened$ | async } as layers">
+  <ng-container *ngIf="{ orderConfirmation: orderConfirmationIsOpened$ | async, cart: cartIsOpened$ | async, productDetails: productDetails$ | async } as layers">
     <!-- fade -->
     <div *ngIf="layers.cart" (click)="closeAllLayers()" class="col-start-1 col-span-5 z-20 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
     
@@ -20,14 +20,27 @@
       <app-cart></app-cart>
     </div>
 
+    <!-- product details (angular animations w/ keyframes) -->
+    <ng-container *ngIf="layers.productDetails !== undefined">
+       <!-- fade -->
+       <div *ngIf="!!layers.productDetails" class="col-start-1 col-span-5 z-20 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
+      
+       <div
+          *ngIf="!!layers.productDetails"
+          @bounce class="col-start-1 col-span-5 mx-10 row-start-1 row-span-1 relative z-40 grid content-center justify-center"
+          (click)="closeAllLayers()">
+         <app-product-details [product]="layers.productDetails"></app-product-details>
+       </div>
+     </ng-container>
+
     <!-- order confirmation (animate.css) -->
     <!-- separate 'undefined' and 'false' here because 'undefined' means that its not initialized yet
          so it shouldn't trigger the `bounceOutDown` animation when the component loads (causing the 
          component to be briefly visible then triggering the exit animation).
          Try removing the `ng-container` below to see the difference -->
     <ng-container *ngIf="layers.orderConfirmation !== undefined">
-      <div *ngIf="layers.orderConfirmation === true" (click)="closeAllLayers()" class="col-start-1 col-span-5 z-30 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
-      <div class="col-start-1 col-span-5 row-start-1 row-span-1 relative z-40 grid content-center justify-center animated"
+      <div *ngIf="layers.orderConfirmation === true" class="col-start-1 col-span-5 z-30 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
+      <div class="col-start-1 col-span-5 mx-10 row-start-1 row-span-1 relative z-40 grid content-center justify-center animated fast"
           [class.bounceInUp]="layers.orderConfirmation === true"
           [class.bounceOutDown]="layers.orderConfirmation === false"
           (click)="closeAllLayers()">

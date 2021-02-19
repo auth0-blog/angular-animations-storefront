@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Categories, ProductType } from '../models';
+import { IProduct, ProductType } from '../models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UIService {
   private _stateSource$ = new BehaviorSubject<UIState>({
+    // layers
     cartIsOpened: undefined,
     orderConfirmationIsOpened: undefined,
+    productDetails: undefined,
+
+    // filters
     searchQuery: '',
     productType: ProductType.explore,
   });
@@ -23,6 +27,10 @@ export class UIService {
 
   selectOrderConfirmation$(): Observable<boolean> {
     return this.state$.pipe(map((state) => state.orderConfirmationIsOpened));
+  }
+
+  selectProductDetails$(): Observable<IProduct> {
+    return this.state$.pipe(map((state) => state.productDetails));
   }
 
   selectSearchQuery$(): Observable<string> {
@@ -46,6 +54,20 @@ export class UIService {
     this._stateSource$.next({
       ...this._getCurrentState(),
       orderConfirmationIsOpened: isOpened,
+    });
+  }
+
+  viewProductDetails(product: IProduct): void {
+    this._stateSource$.next({
+      ...this._getCurrentState(),
+      productDetails: product,
+    });
+  }
+
+  closeProductDetails(): void {
+    this._stateSource$.next({
+      ...this._getCurrentState(),
+      productDetails: null,
     });
   }
 
@@ -73,14 +95,22 @@ export class UIService {
     return this._getCurrentState().orderConfirmationIsOpened;
   }
 
+  productDetailsCurrentValue(): IProduct {
+    return this._getCurrentState().productDetails;
+  }
+
   private _getCurrentState(): UIState {
     return this._stateSource$.value;
   }
 }
 
 export interface UIState {
+  // layers
   cartIsOpened: boolean;
   orderConfirmationIsOpened: boolean;
+  productDetails: IProduct;
+
+  // filters
   searchQuery: string;
   productType: ProductType;
 }
