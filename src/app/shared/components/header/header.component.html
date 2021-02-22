@@ -11,9 +11,9 @@
     <div class="row-start-1 row-span-1 col-start-5 col-span-1 self-end justify-self-end">
         <button class="button rounded-xl" (click)="openCart()">
             <div #cartButton class="grid grid-rows-3 grid-cols-3">
-                <fa-icon class="row-start-2 row-span-2 col-start-1 col-span-2 text-2xl" [icon]="icons.cart"></fa-icon>
+                <fa-icon class="row-start-2 row-span-2 col-start-1 col-span-2 text-3xl text-gray-700" [icon]="icons.cart"></fa-icon>
                 <ng-container *ngIf="{ value: cartCount$ | async} as cartCount">
-                    <div class="row-start-1 row-span-2 col-start-2 col-span-2 mt-1 text-sm w-6 h-6 justify-self-end align-self-start flex justify-center items-center text-white bg-blue-400 rounded-full"
+                    <div class="row-start-1 row-span-2 col-start-2 col-span-2 mt-2 mr-1 text-sm w-6 h-6 justify-self-end align-self-start flex justify-center items-center text-white bg-blue-400 rounded-full"
                         [class.invisible]="!cartCount.value">
                         {{ cartCount.value }}
                     </div>
