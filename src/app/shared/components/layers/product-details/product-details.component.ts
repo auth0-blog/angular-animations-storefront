@@ -1,5 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { BaseComponent, IProduct, UIService } from '../../../../core';
+import {
+  BaseComponent,
+  CartService,
+  IProduct,
+  UIService,
+} from '../../../../core';
 
 @Component({
   selector: 'app-product-details',
@@ -9,12 +14,16 @@ import { BaseComponent, IProduct, UIService } from '../../../../core';
 export class ProductDetailsComponent extends BaseComponent {
   @Input() product: IProduct;
 
-  constructor(private uiService: UIService) {
+  constructor(private uiService: UIService, private cartService: CartService) {
     super();
   }
 
   closeProductDetails(): void {
     this.uiService.closeProductDetails();
+  }
+
+  addToCart(): void {
+    this.cartService.addToCart(this.product);
   }
 
   noop(event) {
