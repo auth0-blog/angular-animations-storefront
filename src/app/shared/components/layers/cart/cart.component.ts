@@ -20,5 +20,6 @@ export class CartComponent extends BaseComponent {
 
   checkout(): void {
     this.uiService.toggleOrderConfirmation(true);
+    this.cartService.clearCart();
   }
 }

@@ -7,22 +7,22 @@
         </button>
     </div>
 
-    <div class="my-5 overflow-y-auto overflow-x-hidden">
-        <ng-container *ngFor="let product of products$ | async">
-            <div @slideFadeLeft>
-                <app-cart-product-card [product]="product"></app-cart-product-card>
+    <ng-container *ngIf="(products$ | async)?.length > 0; else cartEmptyState">
+        <div class="my-5 overflow-y-auto overflow-x-hidden">
+            <ng-container *ngFor="let product of products$ | async">
+                <div @slideFadeLeft>
+                    <app-cart-product-card [product]="product"></app-cart-product-card>
+                </div>
+            </ng-container>
+        </div>
+
+        <ng-container *ngIf="totalPrice$ | async as totalPrice">
+            <div class="flex flex-row items-center">
+                <h2 class="mx-5 text-2xl font-bold flex-1">TOTAL</h2>
+                <h2 class="mx-5 text-2xl font-bold flex-1 text-right">${{ totalPrice }}</h2>
             </div>
         </ng-container>
-    </div>
 
-    <ng-container *ngIf="totalPrice$ | async as totalPrice">
-        <div class="flex flex-row items-center">
-            <h2 class="mx-5 text-2xl font-bold flex-1">TOTAL</h2>
-            <h2 class="mx-5 text-2xl font-bold flex-1 text-right">${{ totalPrice }}</h2>
-        </div>
-    </ng-container>
-
-    <ng-container *ngIf="(products$ | async)?.length > 0">
         <div class="m-5">
             <button
                 class="p-2 text-l font-bold w-full rounded-full bg-blue-400 text-white"
@@ -31,4 +31,15 @@
             </button>
         </div>
     </ng-container>
+
+    <ng-template #cartEmptyState>
+        <div class="text-center flex items-center h-full">
+            <div class="mx-10 flex flex-col">
+                <!-- empty cart is sad, lets add some plants to brighten up the mood -->
+                <img class="h-36 mb-10 place-self-center" src="assets/images/potted-plant.svg"/>
+                <h3 class="text-xl font-semibold">Your cart is Empty</h3>
+                <p class="text-md opacity-60">Looks like you haven't added anything to your cart yet</p>
+            </div>
+        </div>
+    </ng-template>
 </div>

@@ -4,7 +4,7 @@
             <ng-container *ngFor="let item of productTypes$ | async">
                 <li class="p-5">
                     <button
-                        class="text-xl text-gray-600 p-2 w-full rounded-full"
+                        class="text-xl text-gray-600 p-2 w-full rounded-full hover-dim"
                         [class.bg-gray-50]="item.typeKey === selectedProductType"
                         [class.font-bold]="item.typeKey === selectedProductType"
                         [class.text-gray-800]="item.typeKey === selectedProductType"

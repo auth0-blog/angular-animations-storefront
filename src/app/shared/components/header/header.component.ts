@@ -9,9 +9,8 @@ import { BaseComponent, CartService, UIService } from '../../../core';
 export class HeaderComponent extends BaseComponent {
   @ViewChild('cartButton') cartButton: ElementRef;
   searchQuery = '';
-  cartCount$ = this.cartService.selectProducts$().pipe(
+  cartCount$ = this.cartService.selectTotalProductQuantity$().pipe(
     delay(600),
-    map((products) => products?.length || 0),
     tap((count) => {
       if (count > 0 && this.cartButton?.nativeElement) {
         this.cartButton.nativeElement.animate(

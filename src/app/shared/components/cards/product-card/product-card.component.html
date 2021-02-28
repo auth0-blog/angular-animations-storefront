@@ -14,8 +14,8 @@
             <img class="h-full w-full rounded-xl" [src]="product?.imageUrl"/>
         </div>
         <div class="row-start-1 row-span-1 col-start-1 col-span-1 justify-self-end align-self-start">
-            <button class="button py-3 px-6" (click)="noop($event); addToCart(product)">
-                <fa-icon class="text-3xl text-gray-700" [icon]="icons.cartPlus"></fa-icon>
+            <button class="button py-3 px-6 hover-bounce" (click)="noop($event); addToCart(product)">
+                <fa-icon class="text-2xl text-gray-700" [icon]="icons.cartPlus"></fa-icon>
             </button>
         </div>
 

@@ -18,14 +18,22 @@ export class ProductCardComponent extends BaseComponent {
   @ViewChild('addToCartLayer') addToCartLayer: ElementRef;
   @ViewChild('displayCard') displayCard: ElementRef;
 
+  private _isAdding = false;
   constructor(private cartService: CartService, private uiService: UIService) {
     super();
   }
 
   addToCart(selectedProduct: IProduct): void {
+    // if in the middle of an animation, wait until its done prior
+    // to allowing the user to add to cart again
+    if (this._isAdding) {
+      return;
+    }
+    this._isAdding = true;
     this.cartService.addToCart(selectedProduct);
 
     this.addToCartLayer.nativeElement.style.visibility = 'visible';
+    this.addToCartLayer.nativeElement.style.opacity = 1;
     const DOMrect = this.displayCard.nativeElement.getBoundingClientRect();
     const offsetX =
       (window.innerWidth ||
@@ -59,6 +67,8 @@ export class ProductCardComponent extends BaseComponent {
     );
     addToCartAnimation.onfinish = () => {
       this.addToCartLayer.nativeElement.style.visibility = 'hidden';
+      this.addToCartLayer.nativeElement.style.offsetDistance = 0;
+      this._isAdding = false;
     };
   }
 

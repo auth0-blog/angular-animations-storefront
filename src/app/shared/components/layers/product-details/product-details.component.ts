@@ -14,6 +14,7 @@ import {
 export class ProductDetailsComponent extends BaseComponent {
   @Input() product: IProduct;
 
+  addState: 'DEFAULT' | 'ADDED' = 'DEFAULT';
   constructor(private uiService: UIService, private cartService: CartService) {
     super();
   }
@@ -23,7 +24,18 @@ export class ProductDetailsComponent extends BaseComponent {
   }
 
   addToCart(): void {
+    if (this.addState === 'ADDED') {
+      return;
+    }
+    this.addState = 'ADDED';
     this.cartService.addToCart(this.product);
+
+    // reset to default state
+    // some delay here to simulate some processing time
+    // when user clicks on add to cart
+    setTimeout(() => {
+      this.addState = 'DEFAULT';
+    }, 2000);
   }
 
   noop(event) {
