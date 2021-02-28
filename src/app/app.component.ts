@@ -26,14 +26,14 @@ import { bounceIn, bounceOut, SlideRight } from './shared';
   ],
 })
 export class AppComponent {
-  title = 'auth0-ecommerce';
   cartIsOpened$ = this.uiService.selectCart$();
   orderConfirmationIsOpened$ = this.uiService.selectOrderConfirmation$();
   productDetails$ = this.uiService.selectProductDetails$();
+  animated$ = this.uiService.selectAnimated$();
 
   constructor(private uiService: UIService) {}
 
-  closeAllLayers() {
+  closeAllLayers(): void {
     if (this.uiService.selectCartCurrentValue()) {
       this.uiService.toggleCart(false);
     }
@@ -43,5 +43,9 @@ export class AppComponent {
     if (this.uiService.productDetailsCurrentValue()) {
       this.uiService.closeProductDetails();
     }
+  }
+
+  setAnimated(isAnimated: boolean): void {
+    this.uiService.setAnimated(isAnimated);
   }
 }

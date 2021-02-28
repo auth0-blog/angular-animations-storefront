@@ -16,6 +16,9 @@ export class UIService {
     // filters
     searchQuery: '',
     productType: ProductType.explore,
+
+    // animated
+    animated: true,
   });
   state$ = this._stateSource$.asObservable();
 
@@ -41,6 +44,10 @@ export class UIService {
     return this.state$.pipe(map((state) => state.productType));
   }
 
+  selectAnimated$(): Observable<boolean> {
+    return this.state$.pipe(map((state) => state.animated));
+  }
+
   // Actions
 
   toggleCart(isOpened: boolean): void {
@@ -54,6 +61,13 @@ export class UIService {
     this._stateSource$.next({
       ...this._getCurrentState(),
       orderConfirmationIsOpened: isOpened,
+    });
+  }
+
+  setAnimated(isAnimated: boolean): void {
+    this._stateSource$.next({
+      ...this._getCurrentState(),
+      animated: isAnimated,
     });
   }
 
@@ -99,6 +113,10 @@ export class UIService {
     return this._getCurrentState().productDetails;
   }
 
+  animatedCurrentValue(): boolean {
+    return this._getCurrentState().animated;
+  }
+
   private _getCurrentState(): UIState {
     return this._stateSource$.value;
   }
@@ -113,4 +131,7 @@ export interface UIState {
   // filters
   searchQuery: string;
   productType: ProductType;
+
+  // animated
+  animated: boolean;
 }

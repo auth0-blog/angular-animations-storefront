@@ -15,6 +15,7 @@ export class ProductDetailsComponent extends BaseComponent {
   @Input() product: IProduct;
 
   addState: 'DEFAULT' | 'ADDED' = 'DEFAULT';
+  animated$ = this.uiService.selectAnimated$();
   constructor(private uiService: UIService, private cartService: CartService) {
     super();
   }

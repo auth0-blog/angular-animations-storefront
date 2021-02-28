@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { delay, map, tap } from 'rxjs/operators';
+import { delay, map, tap, withLatestFrom } from 'rxjs/operators';
 import { BaseComponent, CartService, UIService } from '../../../core';
 
 @Component({
@@ -11,8 +11,9 @@ export class HeaderComponent extends BaseComponent {
   searchQuery = '';
   cartCount$ = this.cartService.selectTotalProductQuantity$().pipe(
     delay(600),
-    tap((count) => {
-      if (count > 0 && this.cartButton?.nativeElement) {
+    withLatestFrom(this.uiService.selectAnimated$()),
+    tap(([count, isAnimated]) => {
+      if (isAnimated && count > 0 && this.cartButton?.nativeElement) {
         this.cartButton.nativeElement.animate(
           [
             // keyframes
@@ -27,7 +28,8 @@ export class HeaderComponent extends BaseComponent {
           }
         );
       }
-    })
+    }),
+    map(([count, isAnimated]) => count)
   );
 
   constructor(private uiService: UIService, private cartService: CartService) {

@@ -18,6 +18,7 @@ export class ProductCardComponent extends BaseComponent {
   @ViewChild('addToCartLayer') addToCartLayer: ElementRef;
   @ViewChild('displayCard') displayCard: ElementRef;
 
+  animated$ = this.uiService.selectAnimated$();
   private _isAdding = false;
   constructor(private cartService: CartService, private uiService: UIService) {
     super();
@@ -29,9 +30,18 @@ export class ProductCardComponent extends BaseComponent {
     if (this._isAdding) {
       return;
     }
-    this._isAdding = true;
     this.cartService.addToCart(selectedProduct);
+    if (this.uiService.animatedCurrentValue()) {
+      this._isAdding = true;
+      this._animateCard();
+    }
+  }
 
+  viewProductDetails(selectedProduct: IProduct): void {
+    this.uiService.viewProductDetails(selectedProduct);
+  }
+
+  private _animateCard(): void {
     this.addToCartLayer.nativeElement.style.visibility = 'visible';
     this.addToCartLayer.nativeElement.style.opacity = 1;
     const DOMrect = this.displayCard.nativeElement.getBoundingClientRect();
@@ -70,10 +80,6 @@ export class ProductCardComponent extends BaseComponent {
       this.addToCartLayer.nativeElement.style.offsetDistance = 0;
       this._isAdding = false;
     };
-  }
-
-  viewProductDetails(selectedProduct: IProduct): void {
-    this.uiService.viewProductDetails(selectedProduct);
   }
 
   noop(event): void {

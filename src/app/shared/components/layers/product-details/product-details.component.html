@@ -39,13 +39,23 @@
                         (click)="addToCart()"
                         >
                         <div class="grid grid-cols-1 grid-rows-1">
-                            <span
-                                class="col-start-1 col-span-1 row-start-1 row-span-1 animated faster"
-                                [class.slideInRight]="addState === 'DEFAULT'"
-                                [class.slideOutLeft]="addState === 'ADDED'">Add to Cart</span>
-                            <span
-                                *ngIf="addState === 'ADDED'"
-                                class="col-start-1 col-span-1 row-start-1 row-span-1 animated faster slideInRight">Added</span>
+                            <ng-container *ngIf="animated$ | async; else unanimatedAddToCart">
+                                <span
+                                    class="col-start-1 col-span-1 row-start-1 row-span-1 animated faster"
+                                    [class.slideInRight]="addState === 'DEFAULT'"
+                                    [class.slideOutLeft]="addState === 'ADDED'">Add to Cart</span>
+                                <span
+                                    *ngIf="addState === 'ADDED'"
+                                    class="col-start-1 col-span-1 row-start-1 row-span-1 animated faster slideInRight">Added</span>
+                            </ng-container>
+                            <ng-template #unanimatedAddToCart>
+                                <span
+                                    *ngIf="addState === 'DEFAULT'"
+                                    class="col-start-1 col-span-1 row-start-1 row-span-1">Add to Cart</span>
+                                <span
+                                    *ngIf="addState === 'ADDED'"
+                                    class="col-start-1 col-span-1 row-start-1 row-span-1">Added</span>
+                            </ng-template>
                         </div>
                     </button>
                 </div>

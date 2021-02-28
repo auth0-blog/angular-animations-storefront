@@ -13,7 +13,7 @@ import {
 export class MenuComponent extends BaseComponent {
   productTypes$ = this.dataService.getProductTypes$();
   selectedProductType$ = this.uiService.selectProductType$();
-
+  animated$ = this.uiService.selectAnimated$();
   constructor(private dataService: DataService, private uiService: UIService) {
     super();
   }
