@@ -1,14 +1,11 @@
+import { Component, Input } from '@angular/core';
 import {
   animate,
-  animateChild,
   animation,
-  query,
-  state,
   style,
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, Input } from '@angular/core';
 import {
   BaseComponent,
   CartService,
