@@ -1,7 +1,7 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { Component } from '@angular/core';
 import { UIService } from './core';
-import { bounceIn, bounceOut, SlideRight } from './shared';
+import { bounceIn, bounceOut, SlideRight, Fade } from './shared';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,7 @@ import { bounceIn, bounceOut, SlideRight } from './shared';
   styleUrls: ['./app.component.scss'],
   animations: [
     SlideRight,
+    Fade,
     trigger('bounce', [
       transition(
         'void => *',

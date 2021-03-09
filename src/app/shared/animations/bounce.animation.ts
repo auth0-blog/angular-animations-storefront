@@ -42,5 +42,5 @@ export const bounceOut = animation(
       }),
     ])
   ),
-  { params: { timing: DEFAULT_TIMING, delay: 0, scale: 1.1 } }
+  { params: { timing: DEFAULT_TIMING, delay: 0 } }
 );

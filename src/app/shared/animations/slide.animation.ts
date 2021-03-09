@@ -23,21 +23,6 @@ export const SlideExitAnimation = animation([
   ),
 ]);
 
-// export const SlideToCart = trigger('slideToCart', [
-//   transition(
-//     ':enter',
-//    animate('300ms', style({
-//      transform: 'translate('
-//    }))
-//   ),
-//   // transition(
-//   //   ':leave',
-//   //   useAnimation(SlideExitAnimation, {
-//   //     params: { x: `-${window.innerWidth}px`, y: 0, duration: '0.5s' },
-//   //   })
-//   // ),
-// ]);
-
 export const SlideLeft = trigger('slideLeft', [
   transition(
     ':enter',
