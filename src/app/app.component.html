@@ -1,6 +1,4 @@
-<div class="grid grid-cols-5 grid-rows-1 h-screen font-body overflow-hidden"
-  [class.noanimation]="!(animated$ | async)"
-  [@.disabled]="!(animated$ | async)">
+<div class="grid grid-cols-5 grid-rows-1 h-screen font-body overflow-hidden">
   <div class="col-start-1 col-span-1 row-start-1 row-span-1 p-3 h-full overflow-y-auto invisible sm:visible">
     <!-- menu -->
     <app-menu></app-menu>
@@ -15,21 +13,21 @@
   </div>
   <ng-container *ngIf="{ orderConfirmation: orderConfirmationIsOpened$ | async, cart: cartIsOpened$ | async, productDetails: productDetails$ | async } as layers">
     <!-- fade -->
-    <div *ngIf="layers.cart" @fade (click)="closeAllLayers()" class="col-start-1 col-span-5 z-20 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
+    <div *ngIf="layers.cart" (click)="closeAllLayers()" class="col-start-1 col-span-5 z-20 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
     
     <!-- cart (angular animations) -->
-    <div *ngIf="layers.cart" @slideRight class="col-start-1 col-span-5 sm:col-start-4 sm:col-span-2 row-start-1 row-span-1 relative z-30">
+    <div *ngIf="layers.cart" class="col-start-1 col-span-5 sm:col-start-4 sm:col-span-2 row-start-1 row-span-1 relative z-30">
       <app-cart></app-cart>
     </div>
 
     <!-- product details (angular animations w/ keyframes) -->
     <ng-container *ngIf="layers.productDetails !== undefined">
        <!-- fade -->
-       <div *ngIf="!!layers.productDetails" @fade class="col-start-1 col-span-5 z-20 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
+       <div *ngIf="!!layers.productDetails" class="col-start-1 col-span-5 z-20 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
       
        <div
           *ngIf="!!layers.productDetails"
-          @bounce class="col-start-1 col-span-5 mx-10 row-start-1 row-span-1 relative z-40 grid content-center justify-center"
+          class="col-start-1 col-span-5 mx-10 row-start-1 row-span-1 relative z-40 grid content-center justify-center"
           (click)="closeAllLayers()">
          <app-product-details [product]="layers.productDetails"></app-product-details>
        </div>
@@ -41,21 +39,13 @@
          component to be briefly visible then triggering the exit animation).
          Try removing the `ng-container` below to see the difference -->
     <ng-container *ngIf="layers.orderConfirmation !== undefined">
-      <div *ngIf="layers.orderConfirmation === true" @fade class="col-start-1 col-span-5 z-30 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
-      <ng-container *ngIf="animated$ | async; else unanimatedOrderConfirmation">
-          <div class="col-start-1 col-span-5 mx-10 row-start-1 row-span-1 relative z-40 grid content-center justify-center animated fast"
-            [class.bounceInUp]="layers.orderConfirmation === true"
-            [class.bounceOutDown]="layers.orderConfirmation === false"
+      <div *ngIf="layers.orderConfirmation === true" class="col-start-1 col-span-5 z-30 row-start-1 row-span-1 bg-gray-800 bg-opacity-60 h-full w-full"></div>
+      <ng-container *ngIf="layers.orderConfirmation === true">
+          <div class="col-start-1 col-span-5 mx-10 row-start-1 row-span-1 relative z-40 grid content-center justify-center"
             (click)="closeAllLayers()">
               <app-order-confirmation></app-order-confirmation>
           </div>
       </ng-container>
-      <ng-template #unanimatedOrderConfirmation>
-        <div *ngIf="layers.orderConfirmation === true" class="col-start-1 col-span-5 mx-10 row-start-1 row-span-1 relative z-40 grid content-center justify-center animated fast"
-            (click)="closeAllLayers()">
-              <app-order-confirmation></app-order-confirmation>
-          </div>
-      </ng-template>
     </ng-container>
 
   </ng-container>

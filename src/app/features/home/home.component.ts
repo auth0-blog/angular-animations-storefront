@@ -8,12 +8,10 @@ import {
   tap,
 } from 'rxjs/operators';
 import { BaseComponent, DataService, ProductType, UIService } from '../../core';
-import { ScaleFadeStagger, ScaleFade } from '../../shared';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  animations: [ScaleFadeStagger, ScaleFade],
 })
 export class HomeComponent extends BaseComponent {
   products = null;

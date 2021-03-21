@@ -10,7 +10,7 @@
     <ng-container *ngIf="(products$ | async)?.length > 0; else cartEmptyState">
         <div class="my-5 overflow-y-auto overflow-x-hidden">
             <ng-container *ngFor="let product of products$ | async">
-                <div @slideFadeLeft>
+                <div>
                     <app-cart-product-card [product]="product"></app-cart-product-card>
                 </div>
             </ng-container>

@@ -33,7 +33,7 @@
                 </ng-container>
                 <div class="mt-2 flex justify-center">
                     <button
-                        class="p-3 w-56 text-l font-bold rounded-full text-white overflow-hidden hover-softbounce-once"
+                        class="p-3 w-56 text-l font-bold rounded-full text-white overflow-hidden"
                         [class.bg-blue-400]="addState === 'DEFAULT'"
                         [class.bg-green-500]="addState === 'ADDED'"
                         (click)="addToCart()"
@@ -42,11 +42,11 @@
                             <span
                                 *ngIf="addState === 'DEFAULT'"
                                 class="col-start-1 col-span-1 row-start-1 row-span-1"
-                                @addToCartText>Add to Cart</span>
+                                >Add to Cart</span>
                             <span
                                 *ngIf="addState === 'ADDED'"
                                 class="col-start-1 col-span-1 row-start-1 row-span-1"
-                                @addToCartText>Added</span>
+                                >Added</span>
                         </div>
                     </button>
                 </div>

@@ -1,30 +1,10 @@
-import { transition, trigger, useAnimation } from '@angular/animations';
 import { Component } from '@angular/core';
 import { UIService } from './core';
-import { bounceIn, bounceOut, SlideRight, Fade } from './shared';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [
-    SlideRight,
-    Fade,
-    trigger('bounce', [
-      transition(
-        'void => *',
-        useAnimation(bounceIn, {
-          params: { timing: 0.7 },
-        })
-      ),
-      transition(
-        '* => void',
-        useAnimation(bounceOut, {
-          params: { timing: 0.6 },
-        })
-      ),
-    ]),
-  ],
 })
 export class AppComponent {
   cartIsOpened$ = this.uiService.selectCart$();

@@ -1,12 +1,5 @@
 import { Component, Input } from '@angular/core';
 import {
-  animate,
-  animation,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import {
   BaseComponent,
   CartService,
   IProduct,
@@ -17,36 +10,6 @@ import {
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss'],
-  animations: [
-    trigger('addToCartText', [
-      transition(
-        ':enter',
-        animation([
-          style({
-            transform: 'translate(200px,0)',
-          }),
-          animate(
-            '0.3s cubic-bezier(0.59, 0.32, 0.38, 1.13)',
-            style({
-              transform: 'translate(0)',
-            })
-          ),
-        ])
-      ),
-      transition(
-        ':leave',
-        animation([
-          style({ transform: 'translate(0)' }),
-          animate(
-            '0.3s cubic-bezier(0.59, 0.32, 0.38, 1.13)',
-            style({
-              transform: 'translate(-200px,0)',
-            })
-          ),
-        ])
-      ),
-    ]),
-  ],
 })
 export class ProductDetailsComponent extends BaseComponent {
   @Input() product: IProduct;
