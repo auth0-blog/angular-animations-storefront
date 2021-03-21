@@ -50,15 +50,5 @@
 
   </ng-container>
 
-  <div class="sticky bottom-0">
-    <ng-container *ngIf="{ value: animated$ | async } as animated">
-      <div class="flex bg-white w-screen py-5 text-center justify-center font-medium shadow-inner cursor-pointer" (click)="setAnimated(!animated.value)">
-        <span *ngIf="animated.value; else withAnimation">View Without Animations</span>
-        <ng-template #withAnimation>
-          <span>View With Animations</span>
-        </ng-template>
-      </div>
-    </ng-container>
-  </div>
 
 </div>
