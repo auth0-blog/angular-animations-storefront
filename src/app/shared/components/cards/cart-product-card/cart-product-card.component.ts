@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { CartService, IProduct } from 'src/app/core';
+import { CartService, ICartProduct } from '../../../../core';
 
 @Component({
   selector: 'app-cart-product-card',
   templateUrl: './cart-product-card.component.html',
 })
 export class CartProductCardComponent {
-  @Input() product: IProduct;
+  @Input() product: ICartProduct;
 
   constructor(private cartService: CartService) {}
 

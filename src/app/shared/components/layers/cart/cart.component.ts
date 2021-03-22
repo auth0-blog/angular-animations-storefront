@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BaseComponent, CartService, UIService } from 'src/app/core';
-import { SlideFadeLeft } from 'src/app/shared/animations';
+import { BaseComponent, CartService, UIService } from '../../../../core';
+import { SlideFadeLeft } from '../../../animations';
 
 @Component({
   selector: 'app-cart',
@@ -16,5 +16,10 @@ export class CartComponent extends BaseComponent {
 
   closeCart(): void {
     this.uiService.toggleCart(false);
+  }
+
+  checkout(): void {
+    this.uiService.toggleOrderConfirmation(true);
+    this.cartService.clearCart();
   }
 }

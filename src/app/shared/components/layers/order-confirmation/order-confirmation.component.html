@@ -1,0 +1,14 @@
+<div class="p-5 w-full h-full max-w-lg bg-white shadow-md flex flex-col rounded-xl" (click)="noop($event)">
+    <div class="flex flex-row items-center justify-end">
+        <button class="button py-3 px-6 rounded-xl" (click)="closeOrderConfirmation()">
+            <fa-icon class="text-l" [icon]="icons.close"></fa-icon>
+        </button>
+    </div>
+
+    <img class="h-24 place-self-center" src="assets/images/order-confirmation.svg"/>
+    <h2 class="mt-5 mx-5 text-2xl text-center font-bold flex-1">Thank you for your Order!</h2>
+
+    <p class="m-5 text-l text-center font-medium">
+        Your random objects order has been placed successfully. You should get a confirmation email with a random tracking information.
+    </p>
+</div>

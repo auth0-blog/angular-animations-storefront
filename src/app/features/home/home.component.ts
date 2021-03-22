@@ -7,13 +7,8 @@ import {
   takeUntil,
   tap,
 } from 'rxjs/operators';
-import {
-  BaseComponent,
-  DataService,
-  ProductType,
-  UIService,
-} from 'src/app/core';
-import { ScaleFadeStagger, ScaleFade } from 'src/app/shared';
+import { BaseComponent, DataService, ProductType, UIService } from '../../core';
+import { ScaleFadeStagger, ScaleFade } from '../../shared';
 
 @Component({
   selector: 'app-home',

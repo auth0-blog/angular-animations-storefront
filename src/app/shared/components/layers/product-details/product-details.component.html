@@ -1,0 +1,41 @@
+<div class="p-5 product-details-container bg-white shadow-md flex flex-col rounded-xl" (click)="noop($event)">
+    <div class="flex flex-row items-center justify-end">
+        <button class="button rounded-xl" (click)="closeProductDetails()">
+            <fa-icon class="text-l" [icon]="icons.close"></fa-icon>
+        </button>
+    </div>
+    <div class="px-5 pb-5 flex flex-wrap justify-center gap-6 overflow-y-auto">
+    
+        <ng-container *ngIf="product">
+            
+            <div>
+                <img class="w-60 h-60 rounded-xl" [src]="product.imageUrl"/>
+            </div>
+            
+            <div class="flex flex-col flex-grow max-w-xs">
+                <h2 class="text-2xl font-bold">{{ product.title }}</h2>
+                <span class="font-bold text-blue-400 text-3xl my-2">${{ product?.price }}</span>
+                <p class="text-md">
+                    {{ product.description }}
+                </p>
+
+                <p class="text-md text-gray-500 flex-1">
+                    {{ product.longDescription }}
+                </p>
+        
+                <ng-container *ngIf="product.categories?.length > 0">
+                    <p>Categories</p>
+                    <div *ngFor="let category of product.categories">
+                        <div class="">
+                            {{ category }}
+                        </div>
+                    </div>
+                </ng-container>
+                <div class="mt-2 flex justify-center">
+                    <app-cart-button [product]="product"></app-cart-button>
+                </div>
+            </div>
+    
+        </ng-container>
+    </div>
+</div>

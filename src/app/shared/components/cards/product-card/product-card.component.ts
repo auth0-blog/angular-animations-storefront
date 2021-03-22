@@ -1,6 +1,12 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { BaseComponent, CartService, IProduct } from 'src/app/core';
-import { SlideRight } from 'src/app/shared/animations';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import {
+  BaseComponent,
+  CartService,
+  IProduct,
+  UIService,
+} from '../../../../core';
+import { SlideRight } from '../../../animations';
+
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
@@ -11,14 +17,32 @@ export class ProductCardComponent extends BaseComponent {
   @ViewChild('addToCartLayer') addToCartLayer: ElementRef;
   @ViewChild('displayCard') displayCard: ElementRef;
 
-  constructor(private cartService: CartService) {
+  animated$ = this.uiService.selectAnimated$();
+  private _isAdding = false;
+  constructor(private cartService: CartService, private uiService: UIService) {
     super();
   }
 
   addToCart(selectedProduct: IProduct): void {
+    // if in the middle of an animation, wait until its done prior
+    // to allowing the user to add to cart again
+    if (this._isAdding) {
+      return;
+    }
     this.cartService.addToCart(selectedProduct);
+    if (this.uiService.animatedCurrentValue()) {
+      this._isAdding = true;
+      this._animateCard();
+    }
+  }
 
+  viewProductDetails(selectedProduct: IProduct): void {
+    this.uiService.viewProductDetails(selectedProduct);
+  }
+
+  private _animateCard(): void {
     this.addToCartLayer.nativeElement.style.visibility = 'visible';
+    this.addToCartLayer.nativeElement.style.opacity = 1;
     const DOMrect = this.displayCard.nativeElement.getBoundingClientRect();
     const offsetX =
       (window.innerWidth ||
@@ -52,6 +76,12 @@ export class ProductCardComponent extends BaseComponent {
     );
     addToCartAnimation.onfinish = () => {
       this.addToCartLayer.nativeElement.style.visibility = 'hidden';
+      this.addToCartLayer.nativeElement.style.offsetDistance = 0;
+      this._isAdding = false;
     };
+  }
+
+  noop(event): void {
+    event.stopPropagation();
   }
 }

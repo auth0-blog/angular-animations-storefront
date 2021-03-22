@@ -1,8 +1,8 @@
 <div class="p-5 relative z-0">
-    <h2 class="font-extrabold text-3xl">{{ selectedProductType$ | async | titlecase }}</h2>
+    <h2 class="font-extrabold text-3xl text-gray-800">{{ selectedProductType$ | async | titlecase }}</h2>
 
     <ng-container *ngIf="products">
-        <div class="grid auto-rows-5 grid-cols-auto-fill gap-6 my-5" @scaleFadeStagger>
+        <div class="grid auto-rows-5 grid-cols-auto-fill gap-6 my-5 masonry" @scaleFadeStagger>
             <ng-container *ngFor="let productItem of products">
                 <div class="masonry-item" 
                     [class.row-span-3]="productItem.type === 'new'"

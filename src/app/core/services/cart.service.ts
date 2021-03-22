@@ -14,14 +14,31 @@ export class CartService {
 
   addToCart(productToAdd: IProduct): void {
     const currentState = this._getCurrentState();
-    if (
-      !currentState.products.find(
-        (product) => product.productId === productToAdd.productId
-      )
-    ) {
+    const productCartIndex = currentState.products.findIndex(
+      (product) => product.productId === productToAdd.productId
+    );
+    if (productCartIndex === -1) {
       this._stateSource$.next({
         ...currentState,
-        products: [...currentState.products, productToAdd],
+        products: [
+          ...currentState.products,
+          {
+            ...productToAdd,
+            count: 1,
+          },
+        ],
+      });
+    } else {
+      this._stateSource$.next({
+        ...currentState,
+        products: [
+          ...currentState.products.map((product, i) => {
+            if (i === productCartIndex) {
+              product.count += 1;
+            }
+            return product;
+          }),
+        ],
       });
     }
   }
@@ -56,9 +73,17 @@ export class CartService {
     return this.state$.pipe(map((state) => state.products));
   }
 
+  selectTotalProductQuantity$(): Observable<number> {
+    return this.state$.pipe(
+      map((state) => state.products.reduce((acc, curr) => acc + curr.count, 0))
+    );
+  }
+
   selectTotalPrice$(): Observable<number> {
     return this.state$.pipe(
-      map((state) => state.products.reduce((acc, curr) => acc + curr.price, 0))
+      map((state) =>
+        state.products.reduce((acc, curr) => acc + curr.price * curr.count, 0)
+      )
     );
   }
 
@@ -68,5 +93,9 @@ export class CartService {
 }
 
 export interface CartState {
-  products: IProduct[];
+  products: ICartProduct[];
+}
+
+export interface ICartProduct extends IProduct {
+  count: number;
 }

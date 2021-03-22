@@ -2,8 +2,9 @@
     "products": [
         {
             "productId": 1,
-            "title": "Yellow Telephone",
-            "description": "Because yellow telephones are better",
+            "title": "Sunshine Telephone",
+            "description": "Take a call from the sun",
+            "longDescription": "This phone lets you get a tan whenever you want! Just pick up the phone and feel the sun rays warm your skin.",
             "catagories": ["objects"],
             "type": "new",
             "price": 15,
@@ -12,7 +13,7 @@
         {
             "productId": 2,
             "title": "Just the Cone",
-            "description": "Because why not?",
+            "description": "Sugar-free ice-cream",
             "catagories": ["objects"],
             "type": "recommended",
             "price": 5,

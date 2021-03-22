@@ -2,6 +2,7 @@ export interface IProduct {
   productId: number;
   title: string;
   description: string;
+  longDescription: string;
   categories: Categories[];
   type: ProductType;
   price: number;

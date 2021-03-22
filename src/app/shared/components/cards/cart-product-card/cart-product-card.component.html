@@ -1,20 +1,11 @@
-<div 
-    class="grid grid-rows-1 grid-cols-4 gap-6 items-center rounded-xl w-full p-5">
-    <div class="row-start-1 row-span-1 col-start-1 col-span-1 grid">
-        <img class="h-20 w-20 place-self-center rounded-xl" [src]="product?.imageUrl"/>
+<div class="flex gap-5 my-3">
+    <img class="h-20 w-20 place-self-center rounded-xl" [src]="product?.imageUrl"/>
+    <div class="flex-grow flex flex-col">
+        <span class="font-bold text-lg leading-tight">{{ product?.title }}</span>
+        <span class="text-sm opacity-70 leading-tight">Quantity: {{ product?.count }}</span>
+        <button class="button w-min text-xs font-bold underline" (click)="removeFromCart(product.productId)">
+            Remove
+        </button>
     </div>
-
-    <div class="row-start-1 row-span-1 col-start-2 col-span-2 place-self-center justify-self-start">
-        <div class="flex flex-col">
-            <span class="font-bold text-lg leading-tight">{{ product?.title }}</span>
-            <span class="text-sm text-opacity-50 leading-tight">{{ product?.description }}</span>
-            <button class="button w-min text-xs font-bold underline" (click)="removeFromCart(product.productId)">
-                Remove
-            </button>
-        </div>
-    </div>
-
-    <div class="row-start-1 row-span-1 col-start-5 col-span-1">
-        <span class="font-bold text-right">${{ product?.price }}</span>
-    </div>
+    <span class="font-bold text-right">${{ product?.price }}</span>
 </div>
