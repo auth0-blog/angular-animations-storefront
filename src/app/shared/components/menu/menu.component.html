@@ -8,6 +8,7 @@
                             class="text-xl text-gray-600 p-2 w-full rounded-full"
                             [class.font-bold]="item.typeKey === selectedProductType"
                             [class.text-gray-800]="item.typeKey === selectedProductType"
+                            [class.color-bg-primary]="item.typeKey === selectedProductType"
                             (click)="selectMenuItem(item.typeKey)"
                         >{{ item?.displayName }}</button>
                     </li>
