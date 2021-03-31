@@ -1,7 +1,9 @@
 # Angular Animations Storefront
 
 > A showcase of angular animations in the context of an ecommerce site
- 
+
+![App Preview](screenshots/preview.gif)
+
 ## Live Demo
 
 Check out the live demo: https://auth0-blog.github.io/angular-animations-storefront/
