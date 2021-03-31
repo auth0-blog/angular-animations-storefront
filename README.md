@@ -6,6 +6,8 @@
 
 Check out the live demo: https://auth0-blog.github.io/angular-animations-storefront/
 
+If you prefer exploring the codebase right in the browser, you can also use [Stackblitz](https://stackblitz.com/github/auth0-blog/angular-animations-storefront/tree/starter) or [CodeSandbox](https://codesandbox.io/s/github/auth0-blog/angular-animations-storefront/tree/starter).
+
 ## Build Setup
 
 ```bash
